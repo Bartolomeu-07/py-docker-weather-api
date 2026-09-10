@@ -5,13 +5,13 @@ import requests
 def get_weather() -> None:
     print("Performing request to Weather API for city Paris...")
 
-    API_KEY = os.getenv("API_KEY")
-    if not API_KEY:
+    api_key = os.getenv("API_KEY")
+    if not api_key:
         raise ValueError("API_KEY environment variable not set")
 
     city = "Paris"
     params = {
-        "key": API_KEY,
+        "key": api_key,
         "q": city
     }
 
@@ -28,6 +28,7 @@ def get_weather() -> None:
         f"Weather: {data['current']['temp_c']} Celsius, "
         f"{data['current']['condition']['text']}"
     )
+
 
 if __name__ == "__main__":
     get_weather()
